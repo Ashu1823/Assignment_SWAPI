@@ -1,0 +1,45 @@
+<div>
+    <div class="header">
+        <h1>STAR WARS</h1>
+        <p>The SWAPI Project</p>
+    </div>
+    <div class="content">
+        <div class="character-profile">
+            <div class="character-details">
+                <div class="character-image">
+                    <img src="../../../assets/internet.png" alt="Character Image">
+                </div>
+                <div class="character-info">
+                    <p *ngFor="let eachEle of ItemsToShow"><strong>{{eachEle.label}}:</strong>&nbsp;{{personDetails[eachEle.value]}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="info-section">
+            <div class="films">
+                <h3>FILMS</h3>
+                <div class="card" *ngIf="filmDetails?.length else noDataFound">
+                    <div class="card" *ngFor="let eachVal of filmDetails">{{eachVal.title}}</div>
+                </div>
+            </div>
+            <div class="vehicles">
+                <h3>VEHICLES</h3>
+                <div *ngIf="vehicleList?.length else noDataFound">
+                    <div class="card" *ngFor="let eachVal of vehicleList">{{eachVal.name}}</div>
+                </div>
+            </div>
+            <div class="starships">
+                <h3>STAR SHIPS</h3>
+                <div *ngIf="starShipList?.length else noDataFound">
+                    <div class="card" *ngFor="let eachVal of starShipList">{{eachVal.name}}</div>
+                </div>
+            </div>
+        </div>
+        <ng-template #noDataFound>
+            <div class="p-4">No Data Found</div>
+        </ng-template>
+    </div>
+</div>
+
+<div class="loader-overlay" *ngIf="isLoading">
+    <div class="loader"></div>
+</div>

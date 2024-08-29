@@ -1,0 +1,53 @@
+<div class="header">
+    <h1>STAR WARS</h1>
+    <p>The SWAPI Project</p>
+</div>
+<div class="d-flex">
+    <div class="col-md-4">
+        <app-filters [birthYears]="birthYears" (filterChange)="applyFilter($event)"></app-filters>
+    </div>
+    <div class="character-list-container col-md-7">
+        <h3>Character List</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl No</th>
+                    <th>Name</th>
+                    <th>Species</th>
+                    <th>Birth Year</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="filteredCharacters.length else noData">
+                <tr *ngFor="let character of filteredCharacters; let i = index" (click)="selectCharacter(character)">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ character.name }}</td>
+                    <td>{{ character.species?.[0] || 'Not Found' }}</td>
+                    <td>{{ character.birth_year }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="loader-overlay" *ngIf="isLoading">
+            <div class="loader"></div>
+        </div>
+
+        <ng-template #noData>
+            <tbody>
+                <tr>
+                  <td colspan="4" class="no-data">No data found</td>
+                </tr>
+              </tbody>
+        </ng-template>
+
+        <div class="pagination-controls" *ngIf="!filterSelected">
+            <button (click)="previousPage()" [disabled]="currentPage === 1" class="pagination-button prev-button">
+                <span>&laquo; Back</span>
+            </button>
+            <span class="page-info">Page {{ currentPage }}</span>
+            <button (click)="nextPage()" [disabled]="!next" class="pagination-button next-button">
+                <span>Next &raquo;</span>
+            </button>
+        </div>
+    </div>
+</div>
+

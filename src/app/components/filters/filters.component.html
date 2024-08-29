@@ -1,0 +1,38 @@
+<div class="filter-container">
+    <h3>Filters</h3>
+    
+    <label for="movie">Movie Name:</label>
+    <select id="movie" [(ngModel)]="selectedMovie">
+      <option value="">All</option>
+      <option *ngFor="let movie of movies" [value]="movie.url">{{ movie.title }}</option>
+    </select>
+  
+    <label for="species">Species:</label>
+    <select id="species" [(ngModel)]="selectedSpecies">
+      <option value="">All</option>
+      <option *ngFor="let species of speciesList" [value]="species.url">{{ species.name }}</option>
+    </select>
+
+    <label for="species">Star Ships:</label>
+    <select id="species" [(ngModel)]="selectedStarShip">
+      <option value="">All</option>
+      <option *ngFor="let list of starShipList" [value]="list.url">{{ list.name }}</option>
+    </select>
+
+    <label for="vehicle">Vehicles:</label>
+    <select id="vehicle" [(ngModel)]="selectedVehicle">
+      <option value="">All</option>
+      <option *ngFor="let list of vehicleList" [value]="list.url">{{ list.name }}</option>
+    </select>
+  
+    <label for="birthYearRange">Birth Year:</label>
+    <select id="birth_year" [(ngModel)]="selectedBirthYear">
+      <option value="">All</option>
+      <option *ngFor="let year of birthYears" [value]="year">{{ year }}</option>
+    </select>
+    <div class="mt-2">
+      <button (click)="applyFilter()">Apply</button>
+      <button class="ml-2" (click)="clearFilters()">Clear Filters</button>
+    </div>
+  </div>
+  
