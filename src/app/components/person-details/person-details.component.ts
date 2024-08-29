@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class PersonDetailsComponent implements OnInit {
   public starShipList: any;
   public isLoading: boolean = false;
 
-  constructor(private route: ActivatedRoute, private appService: AppService) { }
+  constructor(private route: ActivatedRoute, private appService: AppService, private router: Router) { }
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
