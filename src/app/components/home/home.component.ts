@@ -31,7 +31,6 @@ export class HomeComponent {
       this.appService.getAllPeople(url).subscribe((data: any) => {
         if (data.results && data.count !== this.allList.length) {
           this.allList = [...data.results, ...this.allList];
-          console.log('All List', this.allList);
           if (data.next) {
             this.getALLData(data.next);
           } else {
@@ -73,7 +72,6 @@ export class HomeComponent {
           (filmDetails: any) => {
             let data = filmDetails.map((film: { title: any; }) => film.title);
             eachVal.films = data;
-            // console.log('Updated person object:', eachVal);
             eachVal['filmUpdated'] = true;
           },
           (error: any) => {
@@ -82,7 +80,6 @@ export class HomeComponent {
         );
       }
     }
-    console.log('Updated person object:', array);
   }
 
   nextPage(): void {
@@ -120,7 +117,6 @@ export class HomeComponent {
       this.getCharacterList(this.currentPage);
       this.filterSelected = false;
     }
-    console.log('filtered', this.filteredCharacters);
   }
 
   matchesFilter(person: any, filter: any): boolean {
