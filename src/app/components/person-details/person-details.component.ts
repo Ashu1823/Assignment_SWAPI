@@ -98,6 +98,10 @@ export class PersonDetailsComponent implements OnInit {
     }
   }
 
+backToHome() {
+  this.router.navigate(['/home']);
+}
+
   async getAllValue(arr: any) {
     try {
       const details = await this.appService.getDetailsByUrlList(arr).toPromise();
