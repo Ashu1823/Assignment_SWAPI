@@ -37,7 +37,6 @@ export class FiltersComponent {
       this.appService.performSequentialApiCalls(initialApiUrl)
       .then(allResponses => {
         this.speciesList = allResponses;
-        console.log('All API species responses:', this.speciesList);
       })
       .catch(error => {
         console.error('Error in performing API calls:', error);
@@ -56,7 +55,6 @@ export class FiltersComponent {
       this.appService.performSequentialApiCalls(initialApiUrl)
       .then(allResponses => {
         this.starShipList = allResponses;
-        console.log('All API responses:', this.starShipList);
       })
       .catch(error => {
         console.error('Error in performing API calls:', error);
@@ -76,7 +74,6 @@ export class FiltersComponent {
       this.appService.getVehicles(page).subscribe((data: any) => {
         if(data.results && data.count !== this.vehicleList.length) {
           this.vehicleList = [...data.results,...this.vehicleList];
-          console.log('All Vehicle',this.vehicleList);
           if(data.next) {
             page++;
             this.getVehicles(page);
